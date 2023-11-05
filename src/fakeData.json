@@ -1,0 +1,50 @@
+[
+  {
+    "serviceName": "Historical Walking Tour",
+    "serviceDescription": "Explore the city's rich history.",
+    "serviceProvider": [
+      {
+        "serviceProviderImage": "provider1.jpg",
+        "serviceProviderName": "John Doe"
+      },
+      {
+        "serviceProviderImage": "provider2.jpg",
+        "serviceProviderName": "Jane Smith"
+      }
+    ],
+    "servicePrice": "$50"
+  },
+  {
+    "serviceName": "Nature Hiking Adventure",
+    "serviceDescription": "Discover scenic trails and wildlife.",
+    "serviceProvider": [
+      {
+        "serviceProviderImage": "provider3.jpg",
+        "serviceProviderName": "Emily Brown"
+      }
+    ],
+    "servicePrice": "$75"
+  },
+  {
+    "serviceName": "Culinary Food Tour",
+    "serviceDescription": "Taste local cuisine with an expert guide.",
+    "serviceProvider": [
+      {
+        "serviceProviderImage": "provider4.jpg",
+        "serviceProviderName": "Carlos Rodriguez"
+      }
+    ],
+    "servicePrice": "$60"
+  },
+  {
+    "serviceName": "Art and Culture Exploration",
+    "serviceDescription": "Immerse yourself in the local arts scene.",
+    "serviceProvider": [
+      {
+        "serviceProviderImage": "provider5.jpg",
+        "serviceProviderName": "Maria Gonzalez"
+      }
+    ],
+    "servicePrice": "$55"
+  }
+]
