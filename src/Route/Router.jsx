@@ -7,6 +7,7 @@ import Login from "../Pages/Form/Login";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import Services from "../Pages/Services/Services";
+import AllServices from "../Pages/Services/AllServices";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <ContactUs></ContactUs>,
+      },
+      {
+        path: "show-all",
+        element: <AllServices></AllServices>,
       },
     ],
   },

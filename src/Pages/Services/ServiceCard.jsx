@@ -1,10 +1,10 @@
 import { Button, Card } from "flowbite-react";
 import PropTypes from "prop-types";
 const ServiceCard = ({ service }) => {
-  const { serviceName, serviceDescription } = service;
+  const { serviceName, serviceDescription, serviceImage } = service;
   return (
     <div>
-      <Card className="max-w-sm" imgSrc="/images/blog/image-4.jpg" horizontal>
+      <Card className="max-w-sm h-full" imgSrc={serviceImage} horizontal>
         <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {serviceName}
         </h5>

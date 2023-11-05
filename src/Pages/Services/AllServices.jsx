@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import ServiceCard from "./ServiceCard";
-import { Button } from "flowbite-react";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
-import { Link } from "react-router-dom";
 
-const Services = () => {
+const AllServices = () => {
   const [services, setServices] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -16,11 +15,10 @@ const Services = () => {
         setIsLoading(false); // Mark data loading as complete
       });
   }, []);
-
   return (
     <div className="py-10">
       <h2 className="text-4xl text-center font-bold p-2">
-        Our Popular Services
+        Our All Services Is Here
       </h2>
       {isLoading ? (
         // Display a loading spinner while fetching data
@@ -28,16 +26,13 @@ const Services = () => {
       ) : (
         // Render the services when data is available
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 my-10">
-          {services?.slice(0, 4).map((service) => (
+          {services?.map((service) => (
             <ServiceCard key={service._id} service={service}></ServiceCard>
           ))}
         </div>
       )}
-      <Link to="/show-all">
-        <Button className="mx-auto my-5">Show all Services</Button>
-      </Link>
     </div>
   );
 };
 
-export default Services;
+export default AllServices;

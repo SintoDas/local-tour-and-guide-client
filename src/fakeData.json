@@ -1,50 +1,98 @@
 [
   {
-    "serviceName": "Historical Walking Tour",
-    "serviceDescription": "Explore the city's rich history.",
+    "serviceImage": "https://i.ibb.co/XycvrSp/tour-image1.jpg",
+    "serviceName": "City Walking Tour",
+    "serviceDescription": "Explore the city's hidden gems with a knowledgeable guide.",
     "serviceProvider": [
       {
-        "serviceProviderImage": "provider1.jpg",
-        "serviceProviderName": "John Doe"
-      },
-      {
-        "serviceProviderImage": "provider2.jpg",
-        "serviceProviderName": "Jane Smith"
+        "image": "guide_image_1.jpg",
+        "name": "John Doe"
       }
     ],
     "servicePrice": "$50"
   },
   {
-    "serviceName": "Nature Hiking Adventure",
-    "serviceDescription": "Discover scenic trails and wildlife.",
+    "serviceImage": "https://i.ibb.co/bmGJSFS/tour-image-2.jpg",
+    "serviceName": "Historical Landmarks Tour",
+    "serviceDescription": "Visit historical sites with an informative guide.",
     "serviceProvider": [
       {
-        "serviceProviderImage": "provider3.jpg",
-        "serviceProviderName": "Emily Brown"
+        "image": "guide_image_2.jpg",
+        "name": "Jane Smith"
       }
     ],
-    "servicePrice": "$75"
+    "servicePrice": "$45"
   },
   {
-    "serviceName": "Culinary Food Tour",
-    "serviceDescription": "Taste local cuisine with an expert guide.",
+    "serviceImage": "https://i.ibb.co/hfJsg5K/tour-image3.jpg",
+    "serviceName": "Nature Hike Adventure",
+    "serviceDescription": "Discover nature's beauty with a professional guide.",
     "serviceProvider": [
       {
-        "serviceProviderImage": "provider4.jpg",
-        "serviceProviderName": "Carlos Rodriguez"
+        "image": "guide_image_3.jpg",
+        "name": "Robert Johnson"
       }
     ],
     "servicePrice": "$60"
   },
   {
-    "serviceName": "Art and Culture Exploration",
-    "serviceDescription": "Immerse yourself in the local arts scene.",
+    "serviceImage": "https://i.ibb.co/KG6VpGt/tour-image4.jpg",
+    "serviceName": "Food Tasting Tour",
+    "serviceDescription": "Savor local cuisine on a culinary journey.",
     "serviceProvider": [
       {
-        "serviceProviderImage": "provider5.jpg",
-        "serviceProviderName": "Maria Gonzalez"
+        "image": "guide_image_4.jpg",
+        "name": "Maria Garcia"
       }
     ],
     "servicePrice": "$55"
+  },
+  {
+    "serviceImage": "https://i.ibb.co/TW2gpzZ/tourimage5jpg.jpg",
+    "serviceName": "Art and Culture Experience",
+    "serviceDescription": "Immerse in art and culture with a passionate guide.",
+    "serviceProvider": [
+      {
+        "image": "guide_image_5.jpg",
+        "name": "Michael Brown"
+      }
+    ],
+    "servicePrice": "$70"
+  },
+  {
+    "serviceImage": "https://i.ibb.co/rHQx8Fm/tour-image6.jpg",
+    "serviceName": "Adventure Sports Tour",
+    "serviceDescription": "Experience thrilling adventure sports with an expert guide.",
+    "serviceProvider": [
+      {
+        "image": "guide_image_6.jpg",
+        "name": "Emily Wilson"
+      }
+    ],
+    "servicePrice": "$75"
+  },
+  {
+    "serviceImage": "https://i.ibb.co/FBfd4Wn/tour-image7.jpg",
+    "serviceName": "Wine Tasting Excursion",
+    "serviceDescription": "Enjoy fine wines and vineyard tours with a wine expert.",
+    "serviceProvider": [
+      {
+        "image": "guide_image_7.jpg",
+        "name": "David Lee"
+      }
+    ],
+    "servicePrice": "$65"
+  },
+  {
+    "serviceImage": "https://i.ibb.co/JFRr7mw/tourimage8.jpg",
+    "serviceName": "Customized Private Tour",
+    "serviceDescription": "Create your own personalized tour with a local guide.",
+    "serviceProvider": [
+      {
+        "image": "guide_image_8.jpg",
+        "name": "Sarah Anderson"
+      }
+    ],
+    "servicePrice": "$100"
   }
 ]
