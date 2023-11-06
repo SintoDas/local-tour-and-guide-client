@@ -27,15 +27,22 @@ const Services = () => {
         <LoadingSpinner></LoadingSpinner>
       ) : (
         // Render the services when data is available
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 my-10">
-          {services?.slice(0, 4).map((service) => (
-            <ServiceCard key={service._id} service={service}></ServiceCard>
-          ))}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 w-full my-10">
+          {services &&
+            services
+              ?.slice(0, 4)
+              .map((service) => (
+                <ServiceCard key={service._id} service={service}></ServiceCard>
+              ))}
         </div>
       )}
-      <Link to="/show-all">
-        <Button className="mx-auto my-5">Show all Services</Button>
-      </Link>
+      {services && services.length > 0 && (
+        <Link to="/show-all">
+          <div className="flex justify-center items-center my-5">
+            <Button>Show all Services</Button>
+          </div>
+        </Link>
+      )}
     </div>
   );
 };

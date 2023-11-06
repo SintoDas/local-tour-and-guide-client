@@ -25,8 +25,8 @@ const AllServices = () => {
         <LoadingSpinner></LoadingSpinner>
       ) : (
         // Render the services when data is available
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 my-10">
-          {services?.map((service) => (
+        <div className="grid grid-cols-1  mx-auto gap-6 my-10">
+          {services?.slice(0, 6).map((service) => (
             <ServiceCard key={service._id} service={service}></ServiceCard>
           ))}
         </div>

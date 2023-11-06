@@ -8,6 +8,7 @@ import AboutUs from "../Pages/AboutUs/AboutUs";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import Services from "../Pages/Services/Services";
 import AllServices from "../Pages/Services/AllServices";
+import ServicesDetails from "../Pages/Services/ServicesDetails";
 
 const router = createBrowserRouter([
   {
@@ -28,18 +29,16 @@ const router = createBrowserRouter([
         element: <Services></Services>,
       },
       {
+        path: "/services/:id",
+        element: <ServicesDetails></ServicesDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/api/v1/services/${params.id}`),
+      },
+      {
         path: "/register",
         element: <Register></Register>,
       },
-      {
-        path: "/about",
-        element: <AboutUs></AboutUs>,
-      },
 
-      {
-        path: "/contact",
-        element: <ContactUs></ContactUs>,
-      },
       {
         path: "show-all",
         element: <AllServices></AllServices>,
