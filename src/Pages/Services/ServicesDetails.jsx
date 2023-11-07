@@ -33,8 +33,8 @@ const ServicesDetails = () => {
       serviceImage,
       serviceName,
       userEmail: user.email,
-      serviceProviderName: serviceProvider[0].name,
-      serviceProviderImage: serviceProvider[0].image,
+      serviceProviderName: user.name,
+      serviceProviderImage: user.photoURL,
       providerEmail,
       date,
       address,
@@ -50,7 +50,7 @@ const ServicesDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          alert("booking successfully inserted");
+          alert("booking successfully added");
         }
       });
   };
@@ -67,8 +67,8 @@ const ServicesDetails = () => {
           </h5>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Avatar img={serviceProvider[0].image} rounded bordered />
-          <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <Avatar img={user.photoURL} rounded bordered />
+          <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
             {serviceProvider[0].name}
           </h5>
         </div>
@@ -171,19 +171,6 @@ const ServicesDetails = () => {
                       />
                     </div>
                   </div>
-
-                  <div className="mb-2 block">
-                    <Label htmlFor="email" value="ProviderEmail" />
-                  </div>
-                  <TextInput
-                    id="email"
-                    placeholder={user}
-                    name="provider"
-                    value={`${providerName}.@gmail.com`}
-                    onChange={(event) => setEmail(event.target.value)}
-                    required
-                    readOnly
-                  />
                 </div>
                 <Button className="mt-5" type="submit">
                   Add to Purchase

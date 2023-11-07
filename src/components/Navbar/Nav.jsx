@@ -27,9 +27,14 @@ const Nav = () => {
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse>
-          <Navbar.Link href="/" active>
-            Home
-          </Navbar.Link>
+          <Link to="/">
+            <Navbar.Link>Home</Navbar.Link>
+          </Link>
+          {user?.email && (
+            <Link to="/manageServices">
+              <Navbar.Link>Manage Services</Navbar.Link>
+            </Link>
+          )}
           <Navbar.Link href="/services">Services</Navbar.Link>
           {user?.email ? (
             <Link>
@@ -41,11 +46,19 @@ const Nav = () => {
             </Link>
           )}
           <Navbar.Link>
-            <Dropdown label="Dashboard" inline dismissOnClick={false}>
-              <Dropdown.Item>My Services</Dropdown.Item>
-              <Dropdown.Item>Add Services</Dropdown.Item>
-              <Dropdown.Item>My Schedules</Dropdown.Item>
-            </Dropdown>
+            {user?.email && (
+              <Navbar.Link>
+                <Dropdown label="Dashboard" inline dismissOnClick={false}>
+                  <Link to="/addService">
+                    <Dropdown.Item>Add Services</Dropdown.Item>
+                  </Link>
+                  <Link to="/mySchedules">
+                    <Dropdown.Item>My Schedules</Dropdown.Item>
+                  </Link>
+                  <Dropdown.Item>My Services</Dropdown.Item>
+                </Dropdown>
+              </Navbar.Link>
+            )}
           </Navbar.Link>
         </Navbar.Collapse>
       </Navbar>

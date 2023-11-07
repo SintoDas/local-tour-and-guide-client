@@ -1,7 +1,10 @@
 import { Button, Card } from "flowbite-react";
 import PropTypes from "prop-types";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 const ServiceCard = ({ service }) => {
+  const { user } = useContext(AuthContext);
   const { _id, serviceName, serviceDescription, serviceImage, servicePrice } =
     service;
   return (
@@ -12,6 +15,10 @@ const ServiceCard = ({ service }) => {
         </h5>
         <p className="font-normal text-gray-700 dark:text-gray-400">
           {serviceDescription}
+        </p>
+        <p className="font-normal text-gray-700 dark:text-gray-400">
+          <span className="font-bold text-cyan-800">Service Provider</span> :{" "}
+          {user?.displayName}
         </p>
         <div className="flex items-center justify-between">
           <span className="text-3xl font-bold text-gray-900 dark:text-white">

@@ -9,6 +9,10 @@ import ContactUs from "../Pages/ContactUs/ContactUs";
 import Services from "../Pages/Services/Services";
 import AllServices from "../Pages/Services/AllServices";
 import ServicesDetails from "../Pages/Services/ServicesDetails";
+import AddService from "../Pages/Form/AddService";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import ManageServices from "../Pages/ManageServices/ManageServices";
+import MySchedules from "../Pages/MySchedules/MySchedules";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +34,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/services/:id",
-        element: <ServicesDetails></ServicesDetails>,
+        element: (
+          <PrivateRoute>
+            <ServicesDetails></ServicesDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/api/v1/services/${params.id}`),
       },
@@ -38,9 +46,43 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
+      {
+        path: "/addService",
+        element: (
+          <PrivateRoute>
+            <AddService></AddService>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/updateService:id",
+        element: (
+          <PrivateRoute>
+            <AddService></AddService>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/api/v1/services/${params.id}`),
+      },
+      {
+        path: "/manageServices",
+        element: (
+          <PrivateRoute>
+            <ManageServices></ManageServices>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/mySchedules",
+        element: (
+          <PrivateRoute>
+            <MySchedules></MySchedules>
+          </PrivateRoute>
+        ),
+      },
 
       {
-        path: "show-all",
+        path: "/show-all",
         element: <AllServices></AllServices>,
       },
     ],
