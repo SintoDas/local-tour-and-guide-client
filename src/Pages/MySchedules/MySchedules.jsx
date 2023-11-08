@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
-import { Checkbox, Table } from "flowbite-react";
+import BookingCard from "../BookingCard/BookingCard";
 
 const MySchedules = () => {
-  const [yourBooking, setYourBooking] = useState([]);
+  const [myBooking, setMyBooking] = useState([]);
   const { user } = useContext(AuthContext);
 
   const url = `http://localhost:5000/api/v1/bookings?email=${user?.email}`;
@@ -11,28 +11,19 @@ const MySchedules = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        setYourBooking(data);
+        setMyBooking(data);
       });
   }, [url]);
   return (
     <div>
-      {yourBooking.length === 0 && <p>No bookings found.Booking Soon</p>}
-
-      <Table hoverable>
-        <Table.Head>
-          <Table.HeadCell className="p-4">
-            <Checkbox />
-          </Table.HeadCell>
-          <Table.HeadCell>Product name</Table.HeadCell>
-          <Table.HeadCell>Color</Table.HeadCell>
-          <Table.HeadCell>Category</Table.HeadCell>
-          <Table.HeadCell>Price</Table.HeadCell>
-          <Table.HeadCell>
-            <span className="sr-only">Edit</span>
-          </Table.HeadCell>
-        </Table.Head>
-        <Table.Body className="divide-y"></Table.Body>
-      </Table>
+      {myBooking.length === 0 && (
+        <p className="text-lg text-cyan-600">
+          No bookings found.Booking Soon.....
+        </p>
+      )}
+      {myBooking.map((booking) => (
+        <BookingCard key={booking._id} booking={booking}></BookingCard>
+      ))}
     </div>
   );
 };

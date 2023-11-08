@@ -2,6 +2,7 @@ import { Button, Dropdown, Navbar } from "flowbite-react";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link } from "react-router-dom";
+import logo from "../../assets/localTour.png";
 
 const Nav = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -12,17 +13,17 @@ const Nav = () => {
   return (
     <div>
       <Navbar fluid rounded>
-        <Navbar.Brand href="https://flowbite-react.com">
+        <Navbar.Brand>
           <img
-            src="/favicon.svg"
-            className="mr-3 h-6 sm:h-9"
-            alt="Flowbite React Logo"
+            src={logo}
+            className="w-20 h-20 rounded-full shadow-md hover:scale-110 transition-transform transform duration-300"
+            alt="local tour website image"
           />
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+          <span className="text-lg font-semibold text-indigo-700 ml-2 ">
             Local Tours and Guide
           </span>
         </Navbar.Brand>
-        <div className="flex md:order-2">
+        <div className="flex p-4 md:order-2">
           <Button>Get started</Button>
           <Navbar.Toggle />
         </div>
@@ -35,7 +36,7 @@ const Nav = () => {
               <Navbar.Link>Manage Services</Navbar.Link>
             </Link>
           )}
-          <Navbar.Link href="/services">Services</Navbar.Link>
+          <Navbar.Link href="/show-all">Services</Navbar.Link>
           {user?.email ? (
             <Link>
               <Navbar.Link onClick={handleLogOut}>Logout</Navbar.Link>

@@ -13,6 +13,7 @@ import AddService from "../Pages/Form/AddService";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import ManageServices from "../Pages/ManageServices/ManageServices";
 import MySchedules from "../Pages/MySchedules/MySchedules";
+import UpdateService from "../Pages/Form/UpdateService";
 
 const router = createBrowserRouter([
   {
@@ -55,12 +56,8 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/updateService:id",
-        element: (
-          <PrivateRoute>
-            <AddService></AddService>
-          </PrivateRoute>
-        ),
+        path: "/update/:id",
+        element: <UpdateService></UpdateService>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/api/v1/services/${params.id}`),
       },
@@ -80,10 +77,17 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-
+      {
+        path: "/aboutUs",
+        element: <AboutUs></AboutUs>,
+      },
       {
         path: "/show-all",
         element: <AllServices></AllServices>,
+      },
+      {
+        path: "/contactUs",
+        element: <ContactUs></ContactUs>,
       },
     ],
   },

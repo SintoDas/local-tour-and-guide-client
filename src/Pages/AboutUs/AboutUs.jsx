@@ -1,4 +1,5 @@
-import React from "react";
+import instructor from "../../assets/instructor.png";
+import leader from "../../assets/team.png";
 
 const AboutUs = () => {
   return (
@@ -8,14 +9,14 @@ const AboutUs = () => {
           <h2 className="text-3xl font-semibold text-gray-800 mb-4">
             About Our Team
           </h2>
-          <p className="text-gray-600">
+          <p className="text-gray-600 font-bold">
             Discover the people behind our tours and guide service.
           </p>
         </div>
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="text-center">
             <img
-              src="team-member-image-1.jpg"
+              src={instructor}
               alt="Team Member 1"
               className="w-32 h-32 object-cover mx-auto rounded-full"
             />
@@ -26,7 +27,7 @@ const AboutUs = () => {
           </div>
           <div className="text-center">
             <img
-              src="team-member-image-2.jpg"
+              src={leader}
               alt="Team Member 2"
               className="w-32 h-32 object-cover mx-auto rounded-full"
             />

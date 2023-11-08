@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Button } from "flowbite-react";
 import SocialIcon from "../../components/SocialIcon/SocialIcon";
+import toast from "react-hot-toast";
 // import toast from "react-hot-toast";
 // import SocialIcon from "../SocialIcon";
 
@@ -34,11 +35,11 @@ const Register = () => {
     createUser(email, password)
       .then(() => {
         updateUserProfile(name, img).then(() => {
-          alert("User created successfully");
+          toast.success("User created successfully");
           navigate("/login");
         });
       })
-      .catch((err) => alert(err.message));
+      .catch((err) => toast.error(err.message));
   };
   return (
     <div className="bg-gray-100 flex items-center justify-center rounded-lg min-h-screen ">

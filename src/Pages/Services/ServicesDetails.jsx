@@ -1,20 +1,22 @@
 import { useContext, useState } from "react";
-// import { Avatar, Button, Card, Modal } from "flowbite-react";
 import { Avatar, Button, Card, Label, Modal, TextInput } from "flowbite-react";
-import { Form, Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import toast from "react-hot-toast";
 
 const ServicesDetails = () => {
   const { user } = useContext(AuthContext);
   const service = useLoaderData();
   const {
     serviceName,
-    serviceImage,
-    serviceProvider,
+    providerName,
+    providerImage,
+    providerEmail,
     serviceDescription,
+    serviceArea,
+    serviceImage,
     servicePrice,
   } = service;
-  const providerName = serviceProvider[0].name.toLowerCase().replace(/\s/g, "");
   const [openModal, setOpenModal] = useState(false);
   const [email, setEmail] = useState("");
   console.log(email);
@@ -27,14 +29,14 @@ const ServicesDetails = () => {
     e.preventDefault();
     const date = e.target.date.value;
     const address = e.target.address.value;
-    const providerEmail = e.target.provider.value;
 
     const bookingInfo = {
       serviceImage,
       serviceName,
+      serviceDescription,
       userEmail: user.email,
-      serviceProviderName: user.name,
-      serviceProviderImage: user.photoURL,
+      providerName,
+      providerImage,
       providerEmail,
       date,
       address,
@@ -50,42 +52,33 @@ const ServicesDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          alert("booking successfully added");
+          toast.success("booking successfully added");
         }
       });
   };
   return (
     <div className="py-10 flex justify-center">
-      <Card
-        className="w-full max-w-full h-full"
-        imgSrc={serviceImage}
-        horizontal
-      >
-        <div>
-          <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {serviceName}
+      <Card className="max-w-xl">
+        <div className="flex flex-col items-center pb-10">
+          <Avatar img={providerImage} rounded bordered />
+          <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+            ProviderName:
+            <span className="text-xl ml-2 fort-bold text-blue-800 ">
+              {providerName}
+            </span>
           </h5>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          <Avatar img={user.photoURL} rounded bordered />
-          <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {serviceProvider[0].name}
-          </h5>
-        </div>
-
-        <p className="font-normal text-gray-700 dark:text-gray-400">
-          {serviceDescription}
-        </p>
-        <div className="flex items-center justify-between">
-          <span className="text-3xl font-bold text-gray-900 dark:text-white">
-            {servicePrice}
+          <span className="text-sm text-gray-500 dark:text-gray-400">
+            Location:
+            <span className="text-lg ml-2 text-blue-600 ">{serviceArea}</span>
           </span>
-          <Link>
-            <Button onClick={() => setOpenModal(true)}>Book Now</Button>
-          </Link>
+          <div className="mt-4 w-full justify-center flex space-x-3 lg:mt-6">
+            <Link>
+              <Button onClick={() => setOpenModal(true)}>Book Now</Button>
+            </Link>
+          </div>
         </div>
       </Card>
-
+      <div className="flex justify-between"></div>
       <Modal show={openModal} size="xl" onClose={onCloseModal} popup>
         <Modal.Header />
         <Modal.Body>
@@ -108,11 +101,11 @@ const ServicesDetails = () => {
                     </div>
                     <div className="w-1/2">
                       <div className="mb-2 block">
-                        <Label htmlFor="" value="userEmail" />
+                        <Label htmlFor="" value="ProviderEmail" />
                       </div>
                       <TextInput
                         id="serviceName"
-                        defaultValue={user?.email}
+                        defaultValue={providerEmail}
                         type="text"
                         required
                         readOnly
@@ -152,7 +145,6 @@ const ServicesDetails = () => {
                       </div>
                       <TextInput
                         id="serviceName"
-                        defaultValue={"12/03/10"}
                         type="date"
                         name="date"
                         required
@@ -165,13 +157,26 @@ const ServicesDetails = () => {
                       <TextInput
                         id="serviceName"
                         name="address"
-                        defaultValue={"Bangladesh"}
                         type="text"
                         required
                       />
                     </div>
                   </div>
+
+                  <div className="w-full">
+                    <div className="mb-2 block">
+                      <Label htmlFor="" value="UserEmail" />
+                    </div>
+                    <TextInput
+                      id="userEmail"
+                      name="address"
+                      defaultValue={user.email}
+                      type="text"
+                      required
+                    />
+                  </div>
                 </div>
+
                 <Button className="mt-5" type="submit">
                   Add to Purchase
                 </Button>

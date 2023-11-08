@@ -27,7 +27,7 @@ const Services = () => {
         <LoadingSpinner></LoadingSpinner>
       ) : (
         // Render the services when data is available
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 w-full my-10">
+        <div className="grid grid-cols-1 gap-8 w-full my-10">
           {services &&
             services
               ?.slice(0, 4)

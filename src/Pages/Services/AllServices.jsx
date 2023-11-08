@@ -52,10 +52,10 @@ const AllServices = () => {
         <LoadingSpinner></LoadingSpinner>
       ) : (
         // Render the services when data is available
-        <div className="grid grid-cols-1 w-full md:grid-cols-2 gap-6 my-10">
+        <div className="w-full mb-20">
           {searchQuery === "" && !showAllServices
             ? services
-                .slice(0, 4)
+                .slice(0, 6)
                 .map((service) => (
                   <ServiceCard
                     key={service._id}
@@ -66,7 +66,7 @@ const AllServices = () => {
                 <ServiceCard key={service._id} service={service}></ServiceCard>
               ))}
           {!showAllServices && (
-            <div className="text-center col-span-2 ">
+            <div className="text-center col-span-2 py-10 ">
               <Button
                 onClick={handleShowAllServices}
                 className="text-white px-6 py-2 rounded"

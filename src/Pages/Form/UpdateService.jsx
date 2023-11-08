@@ -1,18 +1,27 @@
 import { Button, Label, TextInput } from "flowbite-react";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import { useLoaderData } from "react-router-dom";
 import toast from "react-hot-toast";
 
-const AddService = () => {
+const UpdateService = () => {
   const { user } = useContext(AuthContext);
+  const {
+    _id,
+    serviceImage,
+    serviceName,
+    serviceDescription,
+    servicePrice,
+    serviceArea,
+  } = useLoaderData();
+  console.log(_id);
   const handleService = (e) => {
     e.preventDefault();
     const form = e.target;
     const serviceImage = form.serviceImage.value;
-    const serviceName = form.service.value;
+    const serviceName = form.serviceName.value;
     const providerName = user ? user.displayName : null;
     const providerEmail = form.email.value;
-    const providerImage = form.image.value;
     const serviceDescription = form.description.value;
     const servicePrice = form.price.value;
     const serviceArea = form.area.value;
@@ -22,14 +31,13 @@ const AddService = () => {
       serviceName,
       serviceDescription,
       providerName,
-      providerImage,
       providerEmail,
       servicePrice,
       serviceArea,
     };
 
-    fetch("http://localhost:5000/api/v1/create-service", {
-      method: "POST",
+    fetch(`http://localhost:5000/api/v1/services/${_id}`, {
+      method: "PUT",
       headers: {
         "Content-type": "application/json",
       },
@@ -37,8 +45,8 @@ const AddService = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.insertedId) {
-          toast.success("Service successfully added");
+        if (data.modifiedCount > 0) {
+          toast.success("Service update successfully");
         }
       });
   };
@@ -51,6 +59,7 @@ const AddService = () => {
           </div>
           <TextInput
             id="pictureUrl"
+            defaultValue={serviceImage}
             name="serviceImage"
             type="text"
             required
@@ -64,7 +73,8 @@ const AddService = () => {
           </div>
           <TextInput
             id="serviceName"
-            name="service"
+            name="serviceName"
+            defaultValue={serviceName}
             type="text"
             required
             shadow
@@ -89,10 +99,9 @@ const AddService = () => {
             <Label htmlFor="providerName" value="Provider Image" />
           </div>
           <TextInput
-            id="serviceName"
-            name="image"
+            id="providerImage"
             readOnly
-            defaultValue={user?.photoURL}
+            defaultValue={user?.photoURl}
             type="text"
             required
             shadow
@@ -105,6 +114,7 @@ const AddService = () => {
           </div>
           <TextInput
             id="description"
+            defaultValue={serviceDescription}
             name="description"
             type="text"
             required
@@ -129,19 +139,33 @@ const AddService = () => {
           <div className="mb-2 block">
             <Label htmlFor="price" value="Price" />
           </div>
-          <TextInput id="price" name="price" type="number" required shadow />
+          <TextInput
+            id="price"
+            defaultValue={servicePrice}
+            name="price"
+            type="number"
+            required
+            shadow
+          />
         </div>
         <div>
           <div className="mb-2 block">
             <Label htmlFor="serviceArea" value="Service Area" />
           </div>
-          <TextInput id="serviceArea" name="area" type="text" required shadow />
+          <TextInput
+            id="serviceArea"
+            defaultValue={serviceArea}
+            name="area"
+            type="text"
+            required
+            shadow
+          />
         </div>
 
-        <Button type="submit">Add Service</Button>
+        <Button type="submit">Update Service</Button>
       </form>
     </div>
   );
 };
 
-export default AddService;
+export default UpdateService;

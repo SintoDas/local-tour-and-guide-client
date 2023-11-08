@@ -3,28 +3,42 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 import { Button, Checkbox, Table } from "flowbite-react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ManageServices = () => {
   const [yourServices, setYourServices] = useState([]);
   const { user } = useContext(AuthContext);
 
   const handleDelete = (id) => {
-    const proceed = confirm("Are you sure you want to delete");
-    if (proceed) {
-      fetch(`http://localhost:5000/api/v1/services/${id}`, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount > 0) {
-            alert("Data deleted successfully");
-            const remaining = yourServices.filter(
-              (service) => service._id !== id
-            );
-            setYourServices(remaining);
-          }
-        });
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/api/v1/services/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              const remaining = yourServices.filter(
+                (service) => service._id !== id
+              );
+              setYourServices(remaining);
+            }
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          });
+      }
+    });
   };
 
   const url = `http://localhost:5000/api/v1/services?providerEmail=${user?.email}`;
@@ -35,7 +49,7 @@ const ManageServices = () => {
         setYourServices(data);
       });
   }, [url]);
-  console.log(yourServices);
+
   return (
     <div className="py-10">
       <Table hoverable>
@@ -64,13 +78,13 @@ const ManageServices = () => {
                 <Checkbox />
               </Table.Cell>
               <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                {service?.ServiceName || "private Service"}
+                {service?.serviceName || "private Service"}
               </Table.Cell>
               <Table.Cell>{service?.providerName}</Table.Cell>
               <Table.Cell>{service?.serviceArea || "Bangladesh"}</Table.Cell>
               <Table.Cell>{service?.servicePrice}</Table.Cell>
               <Table.Cell>
-                <Link to={`/api/v1/services/${service._id}`}>
+                <Link to={`/update/${service._id}`}>
                   <button className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
                     Edit
                   </button>

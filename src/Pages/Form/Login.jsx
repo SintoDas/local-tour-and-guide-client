@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Button } from "flowbite-react";
 import SocialIcon from "../../components/SocialIcon/SocialIcon";
+import toast from "react-hot-toast";
 // import toast from "react-hot-toast";
 
 const Login = () => {
@@ -16,12 +17,12 @@ const Login = () => {
     signIn(email, password)
       .then((res) => {
         console.log(res.user);
-        alert("User Logged in successfully");
+        toast.success("User Logged in successfully");
         // navigate the user
         navigate(location?.state ? location.state : "/");
       })
       .catch((err) => {
-        alert(err.message);
+        toast.error(err.message);
       });
   };
   return (
