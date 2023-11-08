@@ -20,9 +20,12 @@ const ManageServices = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/api/v1/services/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://local-tours-and-guide-server.vercel.app/api/v1/services/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
@@ -41,7 +44,7 @@ const ManageServices = () => {
     });
   };
 
-  const url = `http://localhost:5000/api/v1/services?providerEmail=${user?.email}`;
+  const url = `https://local-tours-and-guide-server.vercel.app/api/v1/services?providerEmail=${user?.email}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())

@@ -11,6 +11,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import app from "../firebase/firbase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -38,8 +39,37 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log("On the auth state changed", currentUser);
-      setLoading(false);
+      const userEmail = currentUser?.email || user?.email;
+      const loggedUser = { email: userEmail };
       setUser(currentUser);
+      setLoading(false);
+
+      // if user have give token
+      if (currentUser) {
+        axios
+          .post(
+            "https://local-tours-and-guide-server.vercel.app/api/v1/jwt",
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
+          .then((res) => {
+            console.log("token", res.data);
+          });
+      } else {
+        axios
+          .post(
+            "https://local-tours-and-guide-server.vercel.app/api/v1/logOut",
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
+          .then((res) => {
+            console.log(res.data);
+          });
+      }
     });
     // clean the function
     return () => {
