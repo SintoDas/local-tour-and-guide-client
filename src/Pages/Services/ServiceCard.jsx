@@ -15,8 +15,13 @@ const ServiceCard = ({ service }) => {
     servicePrice,
   } = service;
   return (
-    <div>
-      <Card className="h-full w-1/2" imgSrc={serviceImage} horizontal>
+    <div className="py-5">
+      <Card className="w-full">
+        <img
+          className="w-full h-[200px] object-cover"
+          src={serviceImage}
+          alt=""
+        />
         <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {serviceName}
         </h5>

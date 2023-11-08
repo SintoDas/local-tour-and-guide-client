@@ -36,7 +36,7 @@ const Nav = () => {
               <Navbar.Link>Manage Services</Navbar.Link>
             </Link>
           )}
-          <Navbar.Link href="/show-all">Services</Navbar.Link>
+          <Navbar.Link href="/">Services</Navbar.Link>
           {user?.email ? (
             <Link>
               <Navbar.Link onClick={handleLogOut}>Logout</Navbar.Link>

@@ -12,7 +12,7 @@ const AllServices = () => {
   const [showAllServices, setShowAllServices] = useState(false);
 
   useEffect(() => {
-    fetch("https://local-tours-and-guide-server.vercel.app/api/v1/services")
+    fetch("http://localhost:5000/api/v1/services")
       .then((res) => res.json())
       .then((data) => {
         setServices(data);
@@ -52,7 +52,7 @@ const AllServices = () => {
         <LoadingSpinner></LoadingSpinner>
       ) : (
         // Render the services when data is available
-        <div className="w-full mb-20">
+        <div className="w-full mb-20 ">
           {searchQuery === "" && !showAllServices
             ? services
                 .slice(0, 6)

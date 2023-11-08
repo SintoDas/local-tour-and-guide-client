@@ -9,7 +9,7 @@ const Services = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://local-tours-and-guide-server.vercel.app/api/v1/services")
+    fetch("http://localhost:5000/api/v1/services")
       .then((res) => res.json())
       .then((data) => {
         setServices(data);
@@ -36,7 +36,7 @@ const Services = () => {
               ))}
         </div>
       )}
-      {services && services.length > 0 && (
+      {services && services.length > 3 && (
         <Link to="/show-all">
           <div className="flex justify-center items-center my-5">
             <Button>Show all Services</Button>

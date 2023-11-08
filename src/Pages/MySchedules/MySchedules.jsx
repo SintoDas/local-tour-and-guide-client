@@ -6,7 +6,7 @@ const MySchedules = () => {
   const [myBooking, setMyBooking] = useState([]);
   const { user } = useContext(AuthContext);
 
-  const url = `https://local-tours-and-guide-server.vercel.app/api/v1/bookings?email=${user?.email}`;
+  const url = `http://localhost:5000/api/v1/bookings?email=${user?.email}`;
   useEffect(() => {
     fetch(url, { credentials: "include" })
       .then((res) => res.json())

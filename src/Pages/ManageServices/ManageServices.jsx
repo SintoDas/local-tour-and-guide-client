@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
-import { Button, Checkbox, Table } from "flowbite-react";
+import { Checkbox, Table } from "flowbite-react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -20,12 +20,9 @@ const ManageServices = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `https://local-tours-and-guide-server.vercel.app/api/v1/services/${id}`,
-          {
-            method: "DELETE",
-          }
-        )
+        fetch(`http://localhost:5000/api/v1/services/${id}`, {
+          method: "DELETE",
+        })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
@@ -44,7 +41,7 @@ const ManageServices = () => {
     });
   };
 
-  const url = `https://local-tours-and-guide-server.vercel.app/api/v1/services?providerEmail=${user?.email}`;
+  const url = `http://localhost:5000/api/v1/services?providerEmail=${user?.email}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
