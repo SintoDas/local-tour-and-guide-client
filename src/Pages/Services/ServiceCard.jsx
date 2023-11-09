@@ -1,10 +1,9 @@
-import { Avatar, Button, Card } from "flowbite-react";
+import { Avatar, Card } from "flowbite-react";
 import PropTypes from "prop-types";
-import { useContext } from "react";
+import { FaLocationDot } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../providers/AuthProvider";
+
 const ServiceCard = ({ service }) => {
-  const { user } = useContext(AuthContext);
   const {
     _id,
     serviceName,
@@ -13,6 +12,7 @@ const ServiceCard = ({ service }) => {
     serviceDescription,
     serviceImage,
     servicePrice,
+    serviceArea,
   } = service;
   return (
     <div className="py-5">
@@ -22,9 +22,19 @@ const ServiceCard = ({ service }) => {
           src={serviceImage}
           alt=""
         />
-        <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          {serviceName}
-        </h5>
+        <div className="flex justify-between ">
+          <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            {serviceName}
+          </h5>
+          <div className="flex justify-center items-center gap-4">
+            <span>
+              <FaLocationDot></FaLocationDot>
+            </span>
+            <h5 className="text-2xl font-bold tracking-tight text-cyan-900 dark:text-white">
+              {serviceArea}
+            </h5>
+          </div>
+        </div>
         <p className="font-normal text-gray-700 dark:text-gray-400">
           {serviceDescription}
         </p>

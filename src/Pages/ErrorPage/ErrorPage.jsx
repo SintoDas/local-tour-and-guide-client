@@ -1,12 +1,14 @@
 import { Button } from "flowbite-react";
+import gif from "../../assets/giphy.gif";
 
 import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
   return (
     <div>
-      <h2 className="text-center text-[200px] text-red-500 font-bold">404</h2>
-
+      <div className="flex justify-center py-10">
+        <img src={gif} alt="" />
+      </div>
       <Link to="/">
         <div className="flex justify-center py-10">
           <Button>Go Home</Button>

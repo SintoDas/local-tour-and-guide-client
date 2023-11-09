@@ -11,7 +11,7 @@ import logo from "../../assets/localTour.png";
 
 const FooterSection = () => {
   return (
-    <div>
+    <div className="py-20">
       <Footer container>
         <div className="w-full">
           <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">

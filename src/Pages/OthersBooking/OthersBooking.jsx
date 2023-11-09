@@ -1,7 +1,6 @@
-import { Avatar, Card } from "flowbite-react";
-import PropTypes from "prop-types";
+import { Avatar, Card, Dropdown } from "flowbite-react";
 
-const BookingCard = ({ booking }) => {
+const OthersBooking = ({ boooking }) => {
   const {
     serviceName,
     providerImage,
@@ -45,11 +44,17 @@ const BookingCard = ({ booking }) => {
               </div>
             </li>
           </ul>
+          <Dropdown label="Dropdown button" dismissOnClick={false}>
+            <Dropdown.Item>Dashboard</Dropdown.Item>
+            <Dropdown.Item>Settings</Dropdown.Item>
+            <Dropdown.Item>Earnings</Dropdown.Item>
+            <Dropdown.Item>Sign out</Dropdown.Item>
+          </Dropdown>
         </div>
       </Card>
       <hr />
     </div>
   );
 };
-BookingCard.propTypes = { booking: PropTypes.object };
-export default BookingCard;
+
+export default OthersBooking;
