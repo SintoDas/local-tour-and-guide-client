@@ -15,6 +15,7 @@ import ManageServices from "../Pages/ManageServices/ManageServices";
 import MySchedules from "../Pages/MySchedules/MySchedules";
 import UpdateService from "../Pages/Form/UpdateService";
 import Reviw from "../Pages/Review/Reviw";
+import UpdateBooking from "../Pages/UpdateBooking/UpdateBooking";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,12 @@ const router = createBrowserRouter([
         element: <UpdateService></UpdateService>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/api/v1/services/${params.id}`),
+      },
+      {
+        path: "/updateBooking/:id",
+        element: <UpdateBooking></UpdateBooking>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/api/v1/bookings/${params.id}`),
       },
       {
         path: "/manageServices",

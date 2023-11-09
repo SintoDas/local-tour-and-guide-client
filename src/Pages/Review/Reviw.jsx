@@ -11,7 +11,6 @@ const Reviw = () => {
   };
   return (
     <div>
-      <h2> Tour guide</h2>
       <FeedbackList feedbackList={feedbackList}></FeedbackList>
       <FeedbaclForm onSubmitFeedback={handleSubmitFeedback}></FeedbaclForm>
     </div>
