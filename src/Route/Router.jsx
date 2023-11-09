@@ -14,6 +14,7 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import ManageServices from "../Pages/ManageServices/ManageServices";
 import MySchedules from "../Pages/MySchedules/MySchedules";
 import UpdateService from "../Pages/Form/UpdateService";
+import Reviw from "../Pages/Review/Reviw";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/services",
         element: <Services></Services>,
+      },
+      {
+        path: "/review",
+        element: <Reviw></Reviw>,
       },
       {
         path: "/services/:id",

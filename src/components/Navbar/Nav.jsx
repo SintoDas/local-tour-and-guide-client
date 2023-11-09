@@ -24,7 +24,9 @@ const Nav = () => {
           </span>
         </Navbar.Brand>
         <div className="flex p-4 md:order-2">
-          <Button>Get started</Button>
+          <Link to="/review">
+            <Button>Review and Feedback</Button>
+          </Link>
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse>
@@ -42,7 +44,7 @@ const Nav = () => {
               <Navbar.Link onClick={handleLogOut}>Logout</Navbar.Link>
             </Link>
           ) : (
-            <Link to="login">
+            <Link to="/login">
               <Navbar.Link>Login</Navbar.Link>
             </Link>
           )}
