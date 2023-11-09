@@ -42,13 +42,16 @@ const ServicesDetails = () => {
       address,
     };
     console.log(bookingInfo);
-    fetch("http://localhost:5000/api/v1/create-booking", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(bookingInfo),
-    })
+    fetch(
+      "https://local-tours-and-guide-server.vercel.app/api/v1/create-booking",
+      {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(bookingInfo),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {

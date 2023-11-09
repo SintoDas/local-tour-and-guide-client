@@ -47,17 +47,25 @@ const AuthProvider = ({ children }) => {
       // if user have give token
       if (currentUser) {
         axios
-          .post("http://localhost:5000/api/v1/jwt", loggedUser, {
-            withCredentials: true,
-          })
+          .post(
+            "https://local-tours-and-guide-server.vercel.app/api/v1/jwt",
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => {
             console.log("token", res.data);
           });
       } else {
         axios
-          .post("http://localhost:5000/api/v1/logOut", loggedUser, {
-            withCredentials: true,
-          })
+          .post(
+            "https://local-tours-and-guide-server.vercel.app/api/v1/logOut",
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => {
             console.log(res.data);
           });

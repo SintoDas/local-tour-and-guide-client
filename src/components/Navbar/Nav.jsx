@@ -16,7 +16,7 @@ const Nav = () => {
         <Navbar.Brand>
           <img
             src={logo}
-            className="w-20 h-20 rounded-full shadow-md hover:scale-110 transition-transform transform duration-300 object-cover"
+            className="w-12 h-12 rounded-full object-cover"
             alt="local tour website image"
           />
           <span className="text-lg font-semibold text-indigo-700 ml-2 ">

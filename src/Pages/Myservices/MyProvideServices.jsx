@@ -10,7 +10,7 @@ const MyProvideServices = () => {
   const { user } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
 
-  const myServicesUrl = `http://localhost:5000/api/v1/services?providerEmail=${user?.email}`;
+  const myServicesUrl = `https://local-tours-and-guide-server.vercel.app/api/v1/services?providerEmail=${user?.email}`;
   useEffect(() => {
     fetch(myServicesUrl)
       .then((res) => res.json())
