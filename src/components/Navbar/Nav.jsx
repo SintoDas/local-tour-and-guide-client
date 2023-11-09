@@ -58,7 +58,9 @@ const Nav = () => {
                   <Link to="/mySchedules">
                     <Dropdown.Item>My Schedules</Dropdown.Item>
                   </Link>
-                  <Dropdown.Item>My Services</Dropdown.Item>
+                  <Link to="/myServices">
+                    <Dropdown.Item>My Services</Dropdown.Item>
+                  </Link>
                 </Dropdown>
               </Navbar.Link>
             )}

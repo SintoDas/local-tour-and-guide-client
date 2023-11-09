@@ -16,6 +16,7 @@ import MySchedules from "../Pages/MySchedules/MySchedules";
 import UpdateService from "../Pages/Form/UpdateService";
 import Reviw from "../Pages/Review/Reviw";
 import UpdateBooking from "../Pages/UpdateBooking/UpdateBooking";
+import MyProvideServices from "../Pages/Myservices/MyProvideServices";
 
 const router = createBrowserRouter([
   {
@@ -100,6 +101,10 @@ const router = createBrowserRouter([
       {
         path: "/contactUs",
         element: <ContactUs></ContactUs>,
+      },
+      {
+        path: "/myServices",
+        element: <MyProvideServices></MyProvideServices>,
       },
     ],
   },

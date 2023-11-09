@@ -1,8 +1,27 @@
-# React + Vite
+# My Tours and guide Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my awesome project! This README provides an overview of the project and its key features.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Easy-to-use interface
+- Fast and efficient performance
+- Here one easy add services and book services
+- Cross-platform compatibility
+  -authenticate by firebase
+
+## Getting Started
+
+## Usage
+
+Here's how you can use this project:
+
+- Create a new services using the "add services" button. But you must authenticate
+- Edit existing services with the built-in editor.
+- Save your changes with the "Save" button.
+- Delete services with the "Delete" button.
+
+## New Features
+
+1. review take from users and store database show this
+2. we always try to provide best services
