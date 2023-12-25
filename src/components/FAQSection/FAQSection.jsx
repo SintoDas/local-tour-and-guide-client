@@ -31,7 +31,7 @@ const FAQSection = () => {
       setActiveIndex(null);
     } else {
       setActiveIndex(index);
-    }
+    }e 
   };
 
   return (

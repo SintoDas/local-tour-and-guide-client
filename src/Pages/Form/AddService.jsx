@@ -28,16 +28,13 @@ const AddService = () => {
       serviceArea,
     };
 
-    fetch(
-      "https://local-tours-and-guide-server.vercel.app/api/v1/create-service",
-      {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(serviceInfo),
-      }
-    )
+    fetch("http://localhost:5000/api/v1/create-service", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(serviceInfo),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {

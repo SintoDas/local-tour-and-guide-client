@@ -4,8 +4,12 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { Checkbox, Table } from "flowbite-react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const ManageServices = () => {
+  <Helmet>
+    <title> local-tour-and-guide| ManageServices</title>
+  </Helmet>;
   const [yourServices, setYourServices] = useState([]);
   const { user } = useContext(AuthContext);
 
@@ -20,12 +24,9 @@ const ManageServices = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `https://local-tours-and-guide-server.vercel.app/api/v1/services/${id}`,
-          {
-            method: "DELETE",
-          }
-        )
+        fetch(`http://localhost:5000/api/v1/services/${id}`, {
+          method: "DELETE",
+        })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
@@ -44,7 +45,7 @@ const ManageServices = () => {
     });
   };
 
-  const url = `https://local-tours-and-guide-server.vercel.app/api/v1/services?providerEmail=${user?.email}`;
+  const url = `http://localhost:5000/api/v1/services?providerEmail=${user?.email}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())

@@ -3,13 +3,17 @@ import ServiceCard from "./ServiceCard";
 import { Button } from "flowbite-react";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Services = () => {
+  <Helmet>
+    <title> Local tour and guide | Services</title>
+  </Helmet>;
   const [services, setServices] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://local-tours-and-guide-server.vercel.app/api/v1/services")
+    fetch("http://localhost:5000/api/v1/services")
       .then((res) => res.json())
       .then((data) => {
         setServices(data);

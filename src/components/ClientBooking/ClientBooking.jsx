@@ -1,99 +1,44 @@
-import { Card, Dropdown } from "flowbite-react";
-import { Link } from "react-router-dom";
+import { Checkbox, Dropdown, Table } from "flowbite-react";
+
 import PropTypes from "prop-types";
 import toast from "react-hot-toast";
-import React, { useState } from "react"; // Import useState from React
 
 const ClientBooking = ({ booking }) => {
-  const {
-    _id,
-    serviceName,
-    serviceImage,
-    providerName,
-    providerEmail,
-    serviceArea,
-  } = booking;
-
-  // Create state to store the selected value from the dropdown
-  const [selectedStatus, setSelectedStatus] = useState("");
-
-  const handleBooking = (e) => {
-    e.preventDefault();
-
-    // Now you can access the selected value from the 'selectedStatus' state
-    const status = selectedStatus;
-
-    const serviceInfo = {
-      serviceImage,
-      serviceName,
-      providerName,
-      providerEmail,
-      serviceArea,
-      status,
-    };
-
-    fetch(
-      `https://local-tours-and-guide-server.vercel.app/api/v1/services/${_id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(serviceInfo),
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount > 0) {
-          toast.success("Service update successfully");
-        }
-      });
-  };
+  const { serviceName, providerName, servicePrice, serviceArea } = booking;
 
   return (
     <div>
-      <Card className="max-w-sm">
-        <div className="mb-4 flex items-center justify-between">
-          <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
-            Others Booking
-          </h5>
-
-          <form onSubmit={handleBooking}>
-            <Dropdown label="Dropdown button" dismissOnClick={false}>
-              <Link to={`/updateBooking/${_id}`}>
-                <Dropdown.Item
-                  name="status"
-                  value="pending"
-                  onClick={() => setSelectedStatus("pending")} // Update the selectedStatus state
-                >
-                  Pending
-                </Dropdown.Item>
-              </Link>
-              <Link to={`/updateBooking/${_id}`}>
-                <Dropdown.Item
-                  name="status"
-                  value="In process"
-                  onClick={() => setSelectedStatus("In process")} // Update the selectedStatus state
-                >
-                  In Process
-                </Dropdown.Item>
-              </Link>
-              <Link to={`/updateBooking/${_id}`}>
-                <Dropdown.Item
-                  name="status"
-                  value="completed"
-                  onClick={() => setSelectedStatus("completed")} // Update the selectedStatus state
-                >
-                  Completed
-                </Dropdown.Item>
-              </Link>
+      <Table hoverable>
+        <Table.Head>
+          <Table.HeadCell className="p-4">
+            <Checkbox />
+          </Table.HeadCell>
+          <Table.HeadCell>Service Name</Table.HeadCell>
+          <Table.HeadCell>Provider Name</Table.HeadCell>
+          <Table.HeadCell>Location</Table.HeadCell>
+          <Table.HeadCell>Price</Table.HeadCell>
+          <Table.HeadCell>
+            <Dropdown>
+              <Dropdown.Item value="Pending">Pending</Dropdown.Item>
+              <Dropdown.Item value="In Progress">In Progress</Dropdown.Item>
+              <Dropdown.Item value="Completed">Completed</Dropdown.Item>
             </Dropdown>
-          </form>
-        </div>
-        <h2> {serviceName}</h2>
-
-        {/* Rest of your component */}
-      </Card>
+          </Table.HeadCell>
+        </Table.Head>
+        <Table.Body className="divide-y">
+          <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+            <Table.Cell className="p-4">
+              <Checkbox />
+            </Table.Cell>
+            <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+              {serviceName}
+            </Table.Cell>
+            <Table.Cell>{providerName}</Table.Cell>
+            <Table.Cell>{serviceArea || "Bangladesh"}</Table.Cell>
+            <Table.Cell>{servicePrice || "$1200"}</Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import banner from "../../assets/banner.jpeg";
 import { motion } from "framer-motion";
+
 const Banner = () => {
   return (
     <div>

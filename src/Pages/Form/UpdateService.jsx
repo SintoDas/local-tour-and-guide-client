@@ -36,16 +36,13 @@ const UpdateService = () => {
       serviceArea,
     };
 
-    fetch(
-      `https://local-tours-and-guide-server.vercel.app/api/v1/services/${_id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(serviceInfo),
-      }
-    )
+    fetch(`http://localhost:5000/api/v1/services/${_id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(serviceInfo),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {

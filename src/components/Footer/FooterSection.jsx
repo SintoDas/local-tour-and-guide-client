@@ -17,10 +17,10 @@ const FooterSection = () => {
           <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
             <div className="w-full rounded-lg">
               <Footer.Brand
-                className="text-cyan-600"
+                className="w-12 h-12 rounded-full object-cover"
                 href=""
                 src={logo}
-                alt="travel Logo"
+                alt="local tour website image"
                 name="Tour and Travel"
               />
             </div>

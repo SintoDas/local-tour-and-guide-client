@@ -25,6 +25,6 @@ Here's how you can use this project:
 
 1. review take from users and store database show this
 2. we always try to provide best services
-   Backend server Link : https://local-tours-and-guide-server.vercel.app//
+   Backend server Link : http://localhost:5000//
 
 Live Link : https://local-tours-and-guide-3eeda.web.app/

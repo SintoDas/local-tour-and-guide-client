@@ -7,7 +7,7 @@ const OthersBooking = () => {
   const [othersBooking, setOthersBooking] = useState([]);
   const { user } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
-  const othersBookingUrl = `https://local-tours-and-guide-server.vercel.app/api/v1/bookings?providerEmail=${user?.email}`;
+  const othersBookingUrl = `http://localhost:5000/api/v1/bookings?providerEmail=${user?.email}`;
   useEffect(() => {
     fetch(othersBookingUrl, { credentials: "include" })
       .then((res) => res.json())

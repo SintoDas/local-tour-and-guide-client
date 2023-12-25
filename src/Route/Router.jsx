@@ -14,9 +14,9 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import ManageServices from "../Pages/ManageServices/ManageServices";
 import MySchedules from "../Pages/MySchedules/MySchedules";
 import UpdateService from "../Pages/Form/UpdateService";
-import Reviw from "../Pages/Review/Reviw";
 import UpdateBooking from "../Pages/UpdateBooking/UpdateBooking";
 import MyProvideServices from "../Pages/Myservices/MyProvideServices";
+import Reviews from "../Pages/Reviews/Reviews";
 
 const router = createBrowserRouter([
   {
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/review",
-        element: <Reviw></Reviw>,
+        element: <Reviews></Reviews>,
       },
       {
         path: "/services/:id",
@@ -48,9 +48,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://local-tours-and-guide-server.vercel.app/api/v1/services/${params.id}`
-          ),
+          fetch(`http://localhost:5000/api/v1/services/${params.id}`),
       },
       {
         path: "/register",
@@ -68,17 +66,13 @@ const router = createBrowserRouter([
         path: "/update/:id",
         element: <UpdateService></UpdateService>,
         loader: ({ params }) =>
-          fetch(
-            `https://local-tours-and-guide-server.vercel.app/api/v1/services/${params.id}`
-          ),
+          fetch(`http://localhost:5000/api/v1/services/${params.id}`),
       },
       {
         path: "/updateBooking/:id",
         element: <UpdateBooking></UpdateBooking>,
         loader: ({ params }) =>
-          fetch(
-            `https://local-tours-and-guide-server.vercel.app/api/v1/bookings/${params.id}`
-          ),
+          fetch(`http://localhost:5000/api/v1/bookings/${params.id}`),
       },
       {
         path: "/manageServices",
