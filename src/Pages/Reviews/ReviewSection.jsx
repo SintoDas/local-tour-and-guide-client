@@ -22,6 +22,9 @@ const ReviewSection = () => {
   }, []);
   return (
     <div>
+      <h1 className="text-blue-500 text-2xl text-center">
+        --- Whats Our Clients Say---
+      </h1>
       <Swiper
         pagination={{
           type: "fraction",
@@ -38,8 +41,8 @@ const ReviewSection = () => {
                 value={review.rating}
                 readOnly
               />
-              <p className="text-sm py-4">{review.description}</p>
-              <h3 className="text-orange-400 text-2xl text-center">
+              <p className="text-sm py-4">{review.review}</p>
+              <h3 className="text-blue-500 text-2xl text-center">
                 {review.name}
               </h3>
             </div>

@@ -17,6 +17,8 @@ import UpdateService from "../Pages/Form/UpdateService";
 import UpdateBooking from "../Pages/UpdateBooking/UpdateBooking";
 import MyProvideServices from "../Pages/Myservices/MyProvideServices";
 import Reviews from "../Pages/Reviews/Reviews";
+import AddBlog from "../Pages/AddBlog/AddBlog";
+import Blogs from "../Pages/Blogs/Blogs";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +41,14 @@ const router = createBrowserRouter([
       {
         path: "/review",
         element: <Reviews></Reviews>,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs></Blogs>,
+      },
+      {
+        path: "/blog",
+        element: <AddBlog></AddBlog>,
       },
       {
         path: "/services/:id",

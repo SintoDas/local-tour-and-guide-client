@@ -39,6 +39,7 @@ const Nav = () => {
             </Link>
           )}
           <Navbar.Link href="/">Services</Navbar.Link>
+          <Navbar.Link href="/blogs">Blogs</Navbar.Link>
           {user?.email ? (
             <Link>
               <Navbar.Link onClick={handleLogOut}>Logout</Navbar.Link>
@@ -60,6 +61,9 @@ const Nav = () => {
                   </Link>
                   <Link to="/myServices">
                     <Dropdown.Item>My Services</Dropdown.Item>
+                  </Link>
+                  <Link to="/blog">
+                    <Dropdown.Item>Add Blog</Dropdown.Item>
                   </Link>
                 </Dropdown>
               </Navbar.Link>
